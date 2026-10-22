@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gravity Lab</title>
+    <meta name="description" content="Interactive gravity and black hole simulator" />
+    <script type="module" crossorigin src="./assets/index-B_O5_BK4.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DtEUOgB8.css">
+  </head>
+  <body>
+    <div id="app">
+      <header class="topbar">
+        <div class="brand-wrap">
+          <div class="brand">GRAVITY LAB</div>
+          <div id="status" class="status">Running</div>
+        </div>
+        <div class="topbar-stats">
+          <span>Time: <strong id="time-readout">0.00 s</strong></span>
+          <span>FPS: <strong id="fps-readout">60</strong></span>
+        </div>
+        <div class="actions">
+          <button id="play-toggle">Pause</button>
+          <button id="step-button">Step</button>
+          <button id="reset-button">Reset</button>
+          <button id="fullscreen-button">Fullscreen</button>
+        </div>
+      </header>
+
+      <main class="layout">
+        <aside class="panel left-panel">
+          <section>
+            <h3>Launch body</h3>
+            <label>
+              Name
+              <input id="body-name" type="text" value="Planet" />
+            </label>
+            <label>
+              Mass
+              <input id="body-mass" type="number" value="1200" min="1" step="10" />
+            </label>
+            <label>
+              Radius
+              <input id="body-radius" type="number" value="7" min="2" max="30" step="0.5" />
+            </label>
+            <label>
+              Color
+              <input id="body-color" type="color" value="#7dd3fc" />
+            </label>
+            <button id="add-body-button">Add body at center</button>
+          </section>
+
+          <section>
+            <h3>Experiment presets</h3>
+            <div class="preset-list">
+              <button data-preset="orbit">Stable orbit</button>
+              <button data-preset="binary">Binary stars</button>
+              <button data-preset="escape">Escape test</button>
+              <button data-preset="blackhole">Black hole</button>
+            </div>
+          </section>
+
+          <section>
+            <h3>Simulation</h3>
+            <label>
+              Time scale
+              <input id="time-scale" type="range" min="0.1" max="3" step="0.1" value="1" />
+            </label>
+            <label>
+              Gravity
+              <input id="gravity-toggle" type="checkbox" checked />
+            </label>
+            <label>
+              Trails
+              <input id="trails-toggle" type="checkbox" checked />
+            </label>
+            <label>
+              Vectors
+              <input id="vectors-toggle" type="checkbox" checked />
+            </label>
+            <label>
+              Grid
+              <input id="grid-toggle" type="checkbox" checked />
+            </label>
+          </section>
+        </aside>
+
+        <section class="sim-panel">
+          <div class="canvas-hud">
+            <span class="live-indicator"><span></span> LIVE SIMULATION</span>
+            <span class="canvas-hint">Drag to move · Scroll to zoom · Click to add</span>
+          </div>
+          <canvas id="sim-canvas" width="1200" height="720"></canvas>
+        </section>
+
+        <aside class="panel right-panel">
+          <section>
+            <h3>Inspector</h3>
+            <div id="inspector-content">
+              <p>Select a body to inspect.</p>
+            </div>
+          </section>
+          <section>
+            <h3>Diagnostics</h3>
+            <div id="diagnostics">
+              <div>Total bodies: <strong id="body-count">0</strong></div>
+              <div>Energy: <strong id="energy-readout">0</strong></div>
+              <div>Momentum: <strong id="momentum-readout">0</strong></div>
+            </div>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+  </body>
+</html>
